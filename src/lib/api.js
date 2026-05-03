@@ -1,11 +1,25 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // Fetch all courses
 export async function getCourses() {
-  const res = await fetch(`${API_URL}/courses`, { cache: "no-store" });
-  if (!res.ok) throw new Error("Failed to fetch courses");
-  return res.json();
+  try {
+    const res = await fetch(`${API_URL}/courses`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) throw new Error("Failed to fetch courses");
+
+    return res.json();
+  } catch (err) {
+    console.error("Courses fetch failed:", err);
+    return [];
+  }
 }
+// export async function getCourses() {
+//   const res = await fetch(`${API_URL}/courses`, { cache: "no-store" });
+//   if (!res.ok) throw new Error("Failed to fetch courses");
+//   return res.json();
+// }
 
 // Fetch a single course by id
 export async function getCourseById(id) {
