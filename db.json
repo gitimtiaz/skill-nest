@@ -14,17 +14,43 @@
       "price": 49.99,
       "enrolled": 12400,
       "category": "Web Development",
-      "tags": ["HTML", "CSS", "JavaScript", "React", "Node.js"],
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Node.js"
+      ],
       "image": "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80",
       "description": "Go from absolute zero to a full-stack developer. This bootcamp covers everything — HTML, CSS, JavaScript, React, Node.js, and MongoDB. You will build 15 real-world projects that you can add directly to your portfolio.",
       "isNew": false,
       "isTrending": true,
       "curriculum": [
-        { "week": 1, "title": "HTML & CSS Foundations", "lessons": 8 },
-        { "week": 2, "title": "JavaScript Essentials", "lessons": 10 },
-        { "week": 3, "title": "React & Component Thinking", "lessons": 9 },
-        { "week": 4, "title": "Node.js & Express Backend", "lessons": 8 },
-        { "week": 5, "title": "MongoDB & Full-Stack Projects", "lessons": 7 }
+        {
+          "week": 1,
+          "title": "HTML & CSS Foundations",
+          "lessons": 8
+        },
+        {
+          "week": 2,
+          "title": "JavaScript Essentials",
+          "lessons": 10
+        },
+        {
+          "week": 3,
+          "title": "React & Component Thinking",
+          "lessons": 9
+        },
+        {
+          "week": 4,
+          "title": "Node.js & Express Backend",
+          "lessons": 8
+        },
+        {
+          "week": 5,
+          "title": "MongoDB & Full-Stack Projects",
+          "lessons": 7
+        }
       ]
     },
     {
@@ -41,17 +67,42 @@
       "price": 59.99,
       "enrolled": 9800,
       "category": "Artificial Intelligence",
-      "tags": ["AI", "Neural Networks", "NLP", "Computer Vision"],
+      "tags": [
+        "AI",
+        "Neural Networks",
+        "NLP",
+        "Computer Vision"
+      ],
       "image": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80",
       "description": "Understand the foundations of modern AI — from search algorithms and logic to neural networks and large language models. Hands-on projects included with every module so you apply what you learn immediately.",
       "isNew": false,
       "isTrending": true,
       "curriculum": [
-        { "week": 1, "title": "What is AI? History & Core Concepts", "lessons": 6 },
-        { "week": 2, "title": "Search, Planning & Logic", "lessons": 7 },
-        { "week": 3, "title": "Machine Learning Primer", "lessons": 8 },
-        { "week": 4, "title": "Neural Networks Deep Dive", "lessons": 9 },
-        { "week": 5, "title": "NLP & Computer Vision Projects", "lessons": 6 }
+        {
+          "week": 1,
+          "title": "What is AI? History & Core Concepts",
+          "lessons": 6
+        },
+        {
+          "week": 2,
+          "title": "Search, Planning & Logic",
+          "lessons": 7
+        },
+        {
+          "week": 3,
+          "title": "Machine Learning Primer",
+          "lessons": 8
+        },
+        {
+          "week": 4,
+          "title": "Neural Networks Deep Dive",
+          "lessons": 9
+        },
+        {
+          "week": 5,
+          "title": "NLP & Computer Vision Projects",
+          "lessons": 6
+        }
       ]
     },
     {
@@ -68,17 +119,43 @@
       "price": 64.99,
       "enrolled": 15300,
       "category": "Machine Learning",
-      "tags": ["Python", "scikit-learn", "TensorFlow", "Pandas", "Numpy"],
+      "tags": [
+        "Python",
+        "scikit-learn",
+        "TensorFlow",
+        "Pandas",
+        "Numpy"
+      ],
       "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80",
       "description": "Learn machine learning the practical way. Every concept is paired with a real dataset and a working project. You will build models for classification, regression, clustering, and recommendation systems — all from scratch.",
       "isNew": false,
       "isTrending": false,
       "curriculum": [
-        { "week": 1, "title": "Python for Data Science", "lessons": 7 },
-        { "week": 2, "title": "Data Cleaning & EDA", "lessons": 8 },
-        { "week": 3, "title": "Supervised Learning Models", "lessons": 9 },
-        { "week": 4, "title": "Unsupervised & Ensemble Methods", "lessons": 7 },
-        { "week": 5, "title": "Capstone — End-to-End ML Pipeline", "lessons": 5 }
+        {
+          "week": 1,
+          "title": "Python for Data Science",
+          "lessons": 7
+        },
+        {
+          "week": 2,
+          "title": "Data Cleaning & EDA",
+          "lessons": 8
+        },
+        {
+          "week": 3,
+          "title": "Supervised Learning Models",
+          "lessons": 9
+        },
+        {
+          "week": 4,
+          "title": "Unsupervised & Ensemble Methods",
+          "lessons": 7
+        },
+        {
+          "week": 5,
+          "title": "Capstone — End-to-End ML Pipeline",
+          "lessons": 5
+        }
       ]
     },
     {
@@ -95,17 +172,43 @@
       "price": 39.99,
       "enrolled": 21000,
       "category": "Python",
-      "tags": ["Python", "OOP", "File Handling", "APIs", "Automation"],
+      "tags": [
+        "Python",
+        "OOP",
+        "File Handling",
+        "APIs",
+        "Automation"
+      ],
       "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
       "description": "The most comprehensive Python course on the platform. Start from variables and loops, move through OOP and file handling, and finish with automation scripts and REST API consumption. Great for both beginners and developers switching to Python.",
       "isNew": false,
       "isTrending": false,
       "curriculum": [
-        { "week": 1, "title": "Python Basics & Data Types", "lessons": 9 },
-        { "week": 2, "title": "Functions, Loops & OOP", "lessons": 10 },
-        { "week": 3, "title": "File Handling & Modules", "lessons": 7 },
-        { "week": 4, "title": "Working with APIs & JSON", "lessons": 6 },
-        { "week": 5, "title": "Automation & Final Projects", "lessons": 6 }
+        {
+          "week": 1,
+          "title": "Python Basics & Data Types",
+          "lessons": 9
+        },
+        {
+          "week": 2,
+          "title": "Functions, Loops & OOP",
+          "lessons": 10
+        },
+        {
+          "week": 3,
+          "title": "File Handling & Modules",
+          "lessons": 7
+        },
+        {
+          "week": 4,
+          "title": "Working with APIs & JSON",
+          "lessons": 6
+        },
+        {
+          "week": 5,
+          "title": "Automation & Final Projects",
+          "lessons": 6
+        }
       ]
     },
     {
@@ -122,17 +225,42 @@
       "price": 54.99,
       "enrolled": 7600,
       "category": "Android App Dev",
-      "tags": ["Kotlin", "Android Studio", "Jetpack Compose", "Firebase"],
+      "tags": [
+        "Kotlin",
+        "Android Studio",
+        "Jetpack Compose",
+        "Firebase"
+      ],
       "image": "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=600&q=80",
       "description": "Build polished Android apps using Kotlin and Jetpack Compose. This course takes you from setting up Android Studio all the way to publishing your app on the Play Store. Firebase integration and real device testing included.",
       "isNew": true,
       "isTrending": false,
       "curriculum": [
-        { "week": 1, "title": "Kotlin Language Fundamentals", "lessons": 8 },
-        { "week": 2, "title": "Jetpack Compose UI", "lessons": 9 },
-        { "week": 3, "title": "Navigation & State Management", "lessons": 7 },
-        { "week": 4, "title": "Firebase Integration", "lessons": 6 },
-        { "week": 5, "title": "Publishing to Play Store", "lessons": 4 }
+        {
+          "week": 1,
+          "title": "Kotlin Language Fundamentals",
+          "lessons": 8
+        },
+        {
+          "week": 2,
+          "title": "Jetpack Compose UI",
+          "lessons": 9
+        },
+        {
+          "week": 3,
+          "title": "Navigation & State Management",
+          "lessons": 7
+        },
+        {
+          "week": 4,
+          "title": "Firebase Integration",
+          "lessons": 6
+        },
+        {
+          "week": 5,
+          "title": "Publishing to Play Store",
+          "lessons": 4
+        }
       ]
     },
     {
@@ -149,17 +277,43 @@
       "price": 69.99,
       "enrolled": 5400,
       "category": "WebOps",
-      "tags": ["Docker", "CI/CD", "Nginx", "Linux", "GitHub Actions"],
+      "tags": [
+        "Docker",
+        "CI/CD",
+        "Nginx",
+        "Linux",
+        "GitHub Actions"
+      ],
       "image": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=600&q=80",
       "description": "Master the operational side of web development. Learn how to containerize apps with Docker, set up CI/CD pipelines with GitHub Actions, configure Nginx, manage Linux servers, and deploy production-grade applications reliably.",
       "isNew": true,
       "isTrending": false,
       "curriculum": [
-        { "week": 1, "title": "Linux & Shell Scripting", "lessons": 7 },
-        { "week": 2, "title": "Docker & Containerization", "lessons": 8 },
-        { "week": 3, "title": "CI/CD with GitHub Actions", "lessons": 7 },
-        { "week": 4, "title": "Nginx & Reverse Proxy Setup", "lessons": 6 },
-        { "week": 5, "title": "Monitoring & Production Deployment", "lessons": 5 }
+        {
+          "week": 1,
+          "title": "Linux & Shell Scripting",
+          "lessons": 7
+        },
+        {
+          "week": 2,
+          "title": "Docker & Containerization",
+          "lessons": 8
+        },
+        {
+          "week": 3,
+          "title": "CI/CD with GitHub Actions",
+          "lessons": 7
+        },
+        {
+          "week": 4,
+          "title": "Nginx & Reverse Proxy Setup",
+          "lessons": 6
+        },
+        {
+          "week": 5,
+          "title": "Monitoring & Production Deployment",
+          "lessons": 5
+        }
       ]
     },
     {
@@ -176,17 +330,42 @@
       "price": 44.99,
       "enrolled": 8900,
       "category": "Cyber Security",
-      "tags": ["Network Security", "Ethical Hacking", "Cryptography", "OWASP"],
+      "tags": [
+        "Network Security",
+        "Ethical Hacking",
+        "Cryptography",
+        "OWASP"
+      ],
       "image": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=600&q=80",
       "description": "Start your journey into cyber security with a solid foundation. This course covers network security, common attack vectors, cryptography basics, and the OWASP Top 10. Perfect for developers who want to write safer code and security beginners alike.",
       "isNew": false,
       "isTrending": true,
       "curriculum": [
-        { "week": 1, "title": "Security Mindset & Threat Landscape", "lessons": 6 },
-        { "week": 2, "title": "Network Security & Protocols", "lessons": 7 },
-        { "week": 3, "title": "Cryptography & Authentication", "lessons": 6 },
-        { "week": 4, "title": "OWASP Top 10 & Web Vulnerabilities", "lessons": 7 },
-        { "week": 5, "title": "Ethical Hacking Lab & CTF Intro", "lessons": 5 }
+        {
+          "week": 1,
+          "title": "Security Mindset & Threat Landscape",
+          "lessons": 6
+        },
+        {
+          "week": 2,
+          "title": "Network Security & Protocols",
+          "lessons": 7
+        },
+        {
+          "week": 3,
+          "title": "Cryptography & Authentication",
+          "lessons": 6
+        },
+        {
+          "week": 4,
+          "title": "OWASP Top 10 & Web Vulnerabilities",
+          "lessons": 7
+        },
+        {
+          "week": 5,
+          "title": "Ethical Hacking Lab & CTF Intro",
+          "lessons": 5
+        }
       ]
     },
     {
@@ -203,17 +382,43 @@
       "price": 59.99,
       "enrolled": 11200,
       "category": "Web Development",
-      "tags": ["React", "Next.js", "TypeScript", "Server Components", "Vercel"],
+      "tags": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Server Components",
+        "Vercel"
+      ],
       "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&q=80",
       "description": "Take your React skills to the next level with Next.js App Router, Server Components, streaming, and edge deployment. Build a production-ready SaaS starter with authentication, payments, and database — all covered in depth.",
       "isNew": true,
       "isTrending": true,
       "curriculum": [
-        { "week": 1, "title": "React Patterns & Advanced Hooks", "lessons": 8 },
-        { "week": 2, "title": "Next.js App Router Deep Dive", "lessons": 9 },
-        { "week": 3, "title": "Server Components & Streaming", "lessons": 7 },
-        { "week": 4, "title": "Auth, Payments & Database", "lessons": 8 },
-        { "week": 5, "title": "Production Deployment & Optimization", "lessons": 6 }
+        {
+          "week": 1,
+          "title": "React Patterns & Advanced Hooks",
+          "lessons": 8
+        },
+        {
+          "week": 2,
+          "title": "Next.js App Router Deep Dive",
+          "lessons": 9
+        },
+        {
+          "week": 3,
+          "title": "Server Components & Streaming",
+          "lessons": 7
+        },
+        {
+          "week": 4,
+          "title": "Auth, Payments & Database",
+          "lessons": 8
+        },
+        {
+          "week": 5,
+          "title": "Production Deployment & Optimization",
+          "lessons": 6
+        }
       ]
     }
   ],
@@ -228,7 +433,11 @@
       "students": 33400,
       "rating": 4.8,
       "bio": "10+ years building products at scale. Former engineer at Shopify. Passionate about making coding accessible to everyone.",
-      "tags": ["React", "Node.js", "Python"]
+      "tags": [
+        "React",
+        "Node.js",
+        "Python"
+      ]
     },
     {
       "id": 2,
@@ -240,7 +449,11 @@
       "students": 15200,
       "rating": 4.7,
       "bio": "PhD in Computer Science from Imperial College London. Published researcher in applied AI. Brings academic depth with practical clarity.",
-      "tags": ["AI", "Docker", "CI/CD"]
+      "tags": [
+        "AI",
+        "Docker",
+        "CI/CD"
+      ]
     },
     {
       "id": 3,
@@ -252,7 +465,11 @@
       "students": 15300,
       "rating": 4.9,
       "bio": "Works at the intersection of data and product. Built recommendation systems used by millions. Believes in learning by doing — every module ships a real project.",
-      "tags": ["Python", "TensorFlow", "scikit-learn"]
+      "tags": [
+        "Python",
+        "TensorFlow",
+        "scikit-learn"
+      ]
     },
     {
       "id": 4,
@@ -264,7 +481,11 @@
       "students": 18800,
       "rating": 4.8,
       "bio": "Built and shipped 30+ apps across Android and the web. Ex-Google Developer Expert. Obsessed with clean architecture and performance.",
-      "tags": ["Kotlin", "React", "Next.js"]
+      "tags": [
+        "Kotlin",
+        "React",
+        "Next.js"
+      ]
     },
     {
       "id": 5,
@@ -276,8 +497,21 @@
       "students": 8900,
       "rating": 4.8,
       "bio": "Certified ethical hacker with 8 years in infosec. Consults for fintech startups on security architecture. Makes the complex world of security genuinely approachable.",
-      "tags": ["OWASP", "Cryptography", "Networking"]
+      "tags": [
+        "OWASP",
+        "Cryptography",
+        "Networking"
+      ]
     }
   ],
-  "users": []
+  "users": [
+    {
+      "name": "Imtiaz Ahamed",
+      "email": "imtiazp32@gmail.com",
+      "password": "ddffD4",
+      "photoUrl": "",
+      "createdAt": "2026-05-03T22:50:44.378Z",
+      "id": 1
+    }
+  ]
 }
