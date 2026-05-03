@@ -11,7 +11,7 @@ const geist = Geist({
 });
 
 export const metadata = {
-  title: "SkillNest – Master your inner talent.",
+  title: "SkillNest: Master Your Inner Talent.",
   description:
     "A modern online learning platform for Web Development, AI, ML, Python, Android App Development, WebOps, Cyber Security, and more.",
   keywords: [

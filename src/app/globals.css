@@ -1,10 +1,12 @@
+/* Swiper CSS imported globally */
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/effect-fade";
+
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* ─── SkillNest Custom Color Tokens ──────────────────────────
-   These become Tailwind utility classes:
-   bg-olive-dark, text-olive-mid, bg-cream, bg-cream-light etc.
-──────────────────────────────────────────────────────────── */
+/* SkillNest custom color */
 @theme {
   --color-olive-dark:  #41431B;
   --color-olive-mid:   #AEB784;
@@ -13,12 +15,7 @@
   --font-sans: var(--font-geist);
 }
 
-/* ─── DaisyUI SkillNest Theme ────────────────────────────────
-   Sets DaisyUI component colors to match the olive/cream palette.
-   base-100 → page background (cream-light)
-   primary  → buttons, links, active states (olive-dark)
-   secondary → accents (olive-mid)
-──────────────────────────────────────────────────────────── */
+/* DaisyUI SkillNest theme */
 @plugin "daisyui/theme" {
   name: "skillnest";
   default: true;
@@ -51,7 +48,6 @@
   --border:          1px;
 }
 
-/* ─── Base ───────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
