@@ -7,10 +7,8 @@ export const metadata = {
     "Browse all courses on SkillNest — Web Development, AI, ML, Python, Android, WebOps, Cyber Security and more.",
 };
 
-export default async function CoursesPage({ searchParams }) {
+export default async function CoursesPage() {
   const courses = await getCourses();
-  const params = await searchParams;
-  const initialCategory = params?.category || "All";
 
   return (
     <div style={{ background: "#F8F3E1" }} className="min-h-screen">
@@ -35,7 +33,7 @@ export default async function CoursesPage({ searchParams }) {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <CourseGrid courses={courses} initialCategory={initialCategory} />
+        <CourseGrid courses={courses} initialCategory="All" />
       </div>
     </div>
   );

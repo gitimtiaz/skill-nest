@@ -7,8 +7,8 @@ export async function generateStaticParams() {
   return courses.map((c) => ({ id: String(c.id) }));
 }
 
-export async function generateMetadata({ params }) {
-  const { id } = await params;
+export async function generateMetadata(props) {
+  const id = props.params.id;
   const course = await getCourseById(id);
   if (!course) return { title: "Course Not Found — SkillNest" };
   return {
@@ -17,8 +17,8 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function CourseDetailPage({ params }) {
-  const { id } = await params;
+export default async function CourseDetailPage(props) {
+  const id = props.params.id;
   const course = await getCourseById(id);
   if (!course) notFound();
   return <CourseDetailClient course={course} />;
