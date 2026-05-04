@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: skillnest-api
+    runtime: node
+    buildCommand: npm install
+    startCommand: npx json-server db.json --port $PORT
+    envVars:
+      - key: NODE_ENV
+        value: production

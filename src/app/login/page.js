@@ -76,7 +76,7 @@ export default function LoginPage() {
              style={{ background: "#fff", borderColor: "#E3DBBB" }}>
           <h1 className="text-2xl font-bold mb-1" style={{ color: "#41431B" }}>Sign In</h1>
           <p className="text-sm mb-7" style={{ color: "rgba(65,67,27,0.55)" }}>
-            Welcome back — pick up right where you left off.
+            Welcome back. Continue right where you left off.
           </p>
 
           {error && (
@@ -145,7 +145,7 @@ export default function LoginPage() {
                          transition-opacity duration-150 disabled:opacity-60"
               style={{ background: "#41431B", color: "#F8F3E1" }}
             >
-              {loading ? "Signing in..." : "Login →"}
+              {loading ? "Signing in..." : "Login"}
             </button>
           </form>
 
