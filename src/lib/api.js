@@ -4,7 +4,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export async function getCourses() {
   try {
     const res = await fetch(`${API_URL}/courses`, {
-      cache: "no-store",
+      cache: "force-cache",
     });
 
     if (!res.ok) throw new Error("Failed to fetch courses");
@@ -15,15 +15,10 @@ export async function getCourses() {
     return [];
   }
 }
-// export async function getCourses() {
-//   const res = await fetch(`${API_URL}/courses`, { cache: "no-store" });
-//   if (!res.ok) throw new Error("Failed to fetch courses");
-//   return res.json();
-// }
 
 // Fetch a single course by id
 export async function getCourseById(id) {
-  const res = await fetch(`${API_URL}/courses/${id}`, { cache: "no-store" });
+  const res = await fetch(`${API_URL}/courses/${id}`, { cache: "force-cache" });
   if (!res.ok) return null;
   return res.json();
 }
@@ -50,7 +45,7 @@ export async function getNewCourses() {
 
 // Fetch all instructors
 export async function getInstructors() {
-  const res = await fetch(`${API_URL}/instructors`, { cache: "no-store" });
+  const res = await fetch(`${API_URL}/instructors`, { cache: "force-cache" });
   if (!res.ok) throw new Error("Failed to fetch instructors");
   return res.json();
 }
@@ -67,7 +62,7 @@ export async function getTopInstructors(limit = 4) {
 export async function getCoursesByCategory(category) {
   const res = await fetch(
     `${API_URL}/courses?category=${encodeURIComponent(category)}`,
-    { cache: "no-store" }
+    { cache: "force-cache" }
   );
   if (!res.ok) throw new Error("Failed to fetch courses by category");
   return res.json();
