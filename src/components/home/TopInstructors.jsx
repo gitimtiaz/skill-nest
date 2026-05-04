@@ -22,9 +22,9 @@ export default function TopInstructors({ instructors }) {
                          hover:shadow-md transition-shadow duration-200"
               style={{ background: "#fff", borderColor: "#E3DBBB" }}
             >
-              {/* Top banner + avatar */}
+              {/* Banner + avatar */}
               <div
-                className="h-16 relative"
+                className="h-16 relative shrink-0"
                 style={{ background: "linear-gradient(135deg, #41431B, #AEB784)" }}
               >
                 <img
@@ -36,7 +36,7 @@ export default function TopInstructors({ instructors }) {
               </div>
 
               {/* Body */}
-              <div className="pt-10 px-5 pb-5 flex flex-col gap-3">
+              <div className="pt-10 px-5 pb-5 flex flex-col gap-3 flex-1">
                 <div>
                   <h3
                     className="font-bold text-base leading-tight"
@@ -44,15 +44,11 @@ export default function TopInstructors({ instructors }) {
                   >
                     {instructor.name}
                   </h3>
-                  <p
-                    className="text-xs mt-0.5"
-                    style={{ color: "rgba(65,67,27,0.55)" }}
-                  >
+                  <p className="text-xs mt-0.5" style={{ color: "rgba(65,67,27,0.55)" }}>
                     {instructor.title}
                   </p>
                 </div>
 
-                {/* Specialty badge */}
                 <span
                   className="self-start px-2.5 py-0.5 rounded-full text-xs font-medium"
                   style={{ background: "rgba(174,183,132,0.25)", color: "#41431B" }}
@@ -60,7 +56,6 @@ export default function TopInstructors({ instructors }) {
                   {instructor.specialty}
                 </span>
 
-                {/* Stats row */}
                 <div
                   className="flex items-center gap-3 text-xs"
                   style={{ color: "rgba(65,67,27,0.55)" }}
@@ -72,7 +67,6 @@ export default function TopInstructors({ instructors }) {
 
                 <StarRating rating={instructor.rating} />
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-1.5 mt-1">
                   {instructor.tags.map((tag) => (
                     <span
@@ -87,10 +81,9 @@ export default function TopInstructors({ instructors }) {
 
                 <Link
                   href="/courses"
-                  className="mt-2 block text-center py-2 rounded-xl text-xs font-semibold
-                      border border-[#41431B] text-[#41431B]
-                      transition-all duration-200 ease-in-out
-                      hover:bg-[#41431B] hover:text-[#F8F3E1]"
+                  className="instructor-btn mt-auto pt-3 block text-center py-2
+                             rounded-xl text-xs font-semibold border transition-all duration-150"
+                  style={{ borderColor: "#41431B", color: "#41431B" }}
                 >
                   View Courses →
                 </Link>
@@ -98,6 +91,13 @@ export default function TopInstructors({ instructors }) {
             </div>
           ))}
         </div>
+
+        <style>{`
+          .instructor-btn:hover {
+            background: #41431B !important;
+            color: #F8F3E1 !important;
+          }
+        `}</style>
       </div>
     </section>
   );

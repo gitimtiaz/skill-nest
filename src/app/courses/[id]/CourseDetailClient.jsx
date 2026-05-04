@@ -39,7 +39,7 @@ export default function CourseDetailClient({ course }) {
   // Show spinner while auth state is being determined
   if (loading) return <Loader text="Checking access..." />;
 
-  // Show lock screen briefly before redirect fires
+  // Show lock screen shortly before redirect fires
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "#F8F3E1" }}>
@@ -144,7 +144,7 @@ export default function CourseDetailClient({ course }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-          {/* Left — main content (2/3) */}
+          {/* Left main content */}
           <div className="lg:col-span-2 flex flex-col gap-8">
 
             {/* Course image */}
@@ -157,7 +157,7 @@ export default function CourseDetailClient({ course }) {
 
             {/* Quick meta */}
             <div
-              className="grid grid-cols-3 rounded-2xl border divide-x overflow-hidden"
+              className="grid grid-cols-3 rounded-2xl border overflow-hidden"
               style={{ background: "#fff", borderColor: "#E3DBBB", divideColor: "#E3DBBB" }}
             >
               {[
@@ -165,7 +165,7 @@ export default function CourseDetailClient({ course }) {
                 { icon: Users,   label: "Students",  value: course.enrolled.toLocaleString() },
                 { icon: Signal,  label: "Level",     value: course.level },
               ].map(({ icon: Icon, label, value }) => (
-                <div key={label} className="flex flex-col items-center py-5 px-3 text-center">
+                <div key={label} className="flex flex-col items-center py-5 px-3 text-center" style={{ borderRight: "1px solid #E3DBBB" }}>
                   <Icon size={18} className="mb-1.5" style={{ color: "#AEB784" }} />
                   <p className="text-xs" style={{ color: "rgba(65,67,27,0.50)" }}>{label}</p>
                   <p className="text-sm font-bold mt-0.5" style={{ color: "#41431B" }}>{value}</p>
@@ -219,7 +219,7 @@ export default function CourseDetailClient({ course }) {
               <div className="divide-y" style={{ divideColor: "#E3DBBB" }}>
                 {course.curriculum.map((week) => (
                   <div key={week.week} style={{ borderBottom: "1px solid #E3DBBB" }}>
-                    {/* Accordion toggle */}
+                    {/* toggle */}
                     <button
                       onClick={() =>
                         setOpenWeek(openWeek === week.week ? null : week.week)
@@ -276,7 +276,7 @@ export default function CourseDetailClient({ course }) {
             </div>
           </div>
 
-          {/* Right — sticky enroll card (1/3) */}
+          {/* Right sticky enroll card */}
           <div className="lg:col-span-1">
             <div
               className="rounded-2xl border p-6 flex flex-col gap-4 lg:sticky lg:top-24"

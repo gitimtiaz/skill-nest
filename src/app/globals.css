@@ -55,3 +55,13 @@ html {
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+/* Responsive utility prevent images from overflowing on small screens */
+img {
+  max-width: 100%;
+}
+
+/* Smooth scrolling for sticky navbar */
+[id] {
+  scroll-margin-top: 80px;
+}
