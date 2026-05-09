@@ -19,9 +19,9 @@ import {
 } from "lucide-react";
 
 const levelColors = {
-  Beginner:     { bg: "#dcfce7", text: "#166534" },
+  Beginner: { bg: "#dcfce7", text: "#166534" },
   Intermediate: { bg: "#fef9c3", text: "#854d0e" },
-  Advanced:     { bg: "#fee2e2", text: "#991b1b" },
+  Advanced: { bg: "#fee2e2", text: "#991b1b" },
 };
 
 export default function CourseDetailClient({ course }) {
@@ -29,12 +29,11 @@ export default function CourseDetailClient({ course }) {
   const router = useRouter();
   const [openWeek, setOpenWeek] = useState(null);
 
-  // Redirect to login if not authenticated
   useEffect(() => {
     if (!loading && !user) {
-      router.push(`/login?redirect=/courses/${course.id}`);
+      router.replace(`/login?redirect=/courses/${course.id}`);
     }
-  }, [user, loading, router, course.id]);
+  }, [loading, user, router, course.id]);
 
   // Show spinner while auth state is being determined
   if (loading) return <Loader text="Checking access..." />;
@@ -161,9 +160,9 @@ export default function CourseDetailClient({ course }) {
               style={{ background: "#fff", borderColor: "#E3DBBB", divideColor: "#E3DBBB" }}
             >
               {[
-                { icon: Clock,   label: "Duration",  value: course.duration },
-                { icon: Users,   label: "Students",  value: course.enrolled.toLocaleString() },
-                { icon: Signal,  label: "Level",     value: course.level },
+                { icon: Clock, label: "Duration", value: course.duration },
+                { icon: Users, label: "Students", value: course.enrolled.toLocaleString() },
+                { icon: Signal, label: "Level", value: course.level },
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex flex-col items-center py-5 px-3 text-center" style={{ borderRight: "1px solid #E3DBBB" }}>
                   <Icon size={18} className="mb-1.5" style={{ color: "#AEB784" }} />
@@ -310,7 +309,7 @@ export default function CourseDetailClient({ course }) {
               {/* Includes list */}
               <div style={{ borderTop: "1px solid #E3DBBB" }} className="pt-4">
                 <p className="text-xs font-semibold uppercase tracking-wider mb-3"
-                   style={{ color: "rgba(65,67,27,0.50)" }}>
+                  style={{ color: "rgba(65,67,27,0.50)" }}>
                   This course includes
                 </p>
                 <ul className="flex flex-col gap-2.5">
@@ -322,9 +321,9 @@ export default function CourseDetailClient({ course }) {
                     "30-day money-back guarantee",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-xs"
-                        style={{ color: "rgba(65,67,27,0.65)" }}>
+                      style={{ color: "rgba(65,67,27,0.65)" }}>
                       <CheckCircle size={13} className="shrink-0 mt-0.5"
-                                   style={{ color: "#AEB784" }} />
+                        style={{ color: "#AEB784" }} />
                       {item}
                     </li>
                   ))}

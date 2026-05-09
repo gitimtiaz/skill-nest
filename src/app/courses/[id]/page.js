@@ -4,13 +4,23 @@ import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const courses = await getCourses();
-  return courses.map((c) => ({ id: String(c.id) }));
+
+  return courses.map((course) => ({
+    id: String(course.id),
+  }));
 }
 
 export async function generateMetadata(props) {
-  const id = props.params.id;
-  const course = await getCourseById(id);
-  if (!course) return { title: "Course Not Found — SkillNest" };
+  const params = await props.params;
+
+  const course = await getCourseById(params.id);
+
+  if (!course) {
+    return {
+      title: "Course Not Found — SkillNest",
+    };
+  }
+
   return {
     title: `${course.title} — SkillNest`,
     description: course.description,
@@ -18,8 +28,13 @@ export async function generateMetadata(props) {
 }
 
 export default async function CourseDetailPage(props) {
-  const id = props.params.id;
-  const course = await getCourseById(id);
-  if (!course) notFound();
+  const params = await props.params;
+
+  const course = await getCourseById(params.id);
+
+  if (!course) {
+    notFound();
+  }
+
   return <CourseDetailClient course={course} />;
 }

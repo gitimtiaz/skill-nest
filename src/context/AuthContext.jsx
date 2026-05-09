@@ -1,52 +1,94 @@
+// "use client";
+
+// import { createContext, useContext } from "react";
+// import { useSession, signOut, authClient } from "@/lib/auth-client";
+
+// const AuthContext = createContext(null);
+
+// export function AuthProvider({ children }) {
+//   return (
+//     <AuthContext.Provider value={{}}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// }
+
+// // useAuth — same interface as before so all existing components work unchanged
+// export function useAuth() {
+//   const { data: session, isPending: loading } = useSession();
+
+//   const user = session?.user
+//     ? {
+//         id: session.user.id,
+//         name: session.user.name,
+//         email: session.user.email,
+//         photoUrl: session.user.image || "",
+//         provider: session.user.provider || "email",
+//       }
+//     : null;
+
+//   const logout = async () => {
+//     await signOut();
+//   };
+
+//   // updateUser is handled directly via authClient in the update page
+//   // kept here for any component that calls it
+//   const updateUser = async ({ name, photoUrl }) => {
+//     await authClient.updateUser({ name, image: photoUrl });
+//   };
+
+//   return { user, loading, logout, updateUser };
+// }
+
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext } from "react";
+import {
+  useSession,
+  signOut,
+  authClient,
+} from "@/lib/auth-client";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { data: session, isPending: loading } = useSession();
 
-  // Initialize user from localStorage on first load
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem("skillnest_user");
-      if (stored) {
-        setUser(JSON.parse(stored));
+  const user = session?.user
+    ? {
+        id: session.user.id,
+        name: session.user.name,
+        email: session.user.email,
+        photoUrl: session.user.image || "",
+        provider: session.user.provider || "email",
       }
-    } catch {
-      localStorage.removeItem("skillnest_user");
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+    : null;
 
-  const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem("skillnest_user", JSON.stringify(userData));
+  const logout = async () => {
+    await signOut();
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("skillnest_user");
-  };
-
-  const updateUser = (updatedFields) => {
-    const merged = { ...user, ...updatedFields };
-    setUser(merged);
-    localStorage.setItem("skillnest_user", JSON.stringify(merged));
+  const updateUser = async ({ name, photoUrl }) => {
+    await authClient.updateUser({
+      name,
+      image: photoUrl,
+    });
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, updateUser }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        logout,
+        updateUser,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 }
 
 export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth must be used inside AuthProvider");
-  return ctx;
+  return useContext(AuthContext);
 }

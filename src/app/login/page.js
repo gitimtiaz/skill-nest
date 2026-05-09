@@ -3,19 +3,17 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { useAuth } from "@/context/AuthContext";
-import { loginUser } from "@/lib/api";
+import { signIn } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { Eye, EyeOff, BookOpen, Mail, Lock } from "lucide-react";
 
-const inputBase = {
+const inputStyle = {
   style: { borderColor: "#E3DBBB", color: "#41431B", background: "#fff" },
   onFocus: (e) => (e.target.style.borderColor = "#AEB784"),
   onBlur: (e) => (e.target.style.borderColor = "#E3DBBB"),
 };
 
 export default function LoginPage() {
-  const { login } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") || "/";
@@ -23,6 +21,7 @@ export default function LoginPage() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -38,21 +37,31 @@ export default function LoginPage() {
       return;
     }
     setLoading(true);
-    try {
-      const user = await loginUser(form);
-      login(user);
-      toast.success(`Welcome back, ${user.name}!`);
-      router.push(redirectTo);
-    } catch (err) {
-      setError(err.message);
-      toast.error(err.message);
-    } finally {
-      setLoading(false);
+    const { error: err } = await signIn.email({
+      email: form.email,
+      password: form.password,
+    });
+    setLoading(false);
+    if (err) {
+      setError(err.message || "Invalid email or password.");
+      toast.error(err.message || "Invalid email or password.");
+      return;
     }
+    toast.success("Welcome back!");
+    router.push(redirectTo);
+    router.refresh();
   };
 
-  const handleGoogleLogin = () => {
-    toast("Google login coming soon — use email & password for now.", { icon: "🔔" });
+  const handleGoogle = async () => {
+    setGoogleLoading(true);
+    const { error: err } = await signIn.social({
+      provider: "google",
+      callbackURL: redirectTo,
+    });
+    if (err) {
+      toast.error(err.message || "Google sign-in failed.");
+      setGoogleLoading(false);
+    }
   };
 
   return (
@@ -76,7 +85,7 @@ export default function LoginPage() {
              style={{ background: "#fff", borderColor: "#E3DBBB" }}>
           <h1 className="text-2xl font-bold mb-1" style={{ color: "#41431B" }}>Sign In</h1>
           <p className="text-sm mb-7" style={{ color: "rgba(65,67,27,0.55)" }}>
-            Welcome back. Continue right where you left off.
+            Welcome back — pick up right where you left off.
           </p>
 
           {error && (
@@ -87,7 +96,6 @@ export default function LoginPage() {
           )}
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-
             {/* Email */}
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-semibold" style={{ color: "#41431B" }}>
@@ -96,15 +104,12 @@ export default function LoginPage() {
               <div className="relative flex items-center">
                 <Mail size={15} className="absolute left-4 pointer-events-none shrink-0"
                       style={{ color: "rgba(65,67,27,0.40)" }} />
-                <input
-                  type="email" name="email" value={form.email}
+                <input type="email" name="email" value={form.email}
                   onChange={handleChange} placeholder="you@example.com"
                   autoComplete="email"
-                  className="w-full py-3 pr-4 rounded-xl border text-sm outline-none
-                             transition-colors duration-150"
-                  style={{ paddingLeft: "2.75rem", ...inputBase.style }}
-                  onFocus={inputBase.onFocus} onBlur={inputBase.onBlur}
-                />
+                  className="w-full py-3 pr-4 rounded-xl border text-sm outline-none transition-colors duration-150"
+                  style={{ paddingLeft: "2.75rem", ...inputStyle.style }}
+                  onFocus={inputStyle.onFocus} onBlur={inputStyle.onBlur} />
               </div>
             </div>
 
@@ -116,21 +121,16 @@ export default function LoginPage() {
               <div className="relative flex items-center">
                 <Lock size={15} className="absolute left-4 pointer-events-none shrink-0"
                       style={{ color: "rgba(65,67,27,0.40)" }} />
-                <input
-                  type={showPassword ? "text" : "password"}
+                <input type={showPassword ? "text" : "password"}
                   name="password" value={form.password}
                   onChange={handleChange} placeholder="••••••••"
                   autoComplete="current-password"
-                  className="w-full py-3 rounded-xl border text-sm outline-none
-                             transition-colors duration-150"
-                  style={{ paddingLeft: "2.75rem", paddingRight: "3rem", ...inputBase.style }}
-                  onFocus={inputBase.onFocus} onBlur={inputBase.onBlur}
-                />
-                <button
-                  type="button" onClick={() => setShowPassword((v) => !v)}
+                  className="w-full py-3 rounded-xl border text-sm outline-none transition-colors duration-150"
+                  style={{ paddingLeft: "2.75rem", paddingRight: "3rem", ...inputStyle.style }}
+                  onFocus={inputStyle.onFocus} onBlur={inputStyle.onBlur} />
+                <button type="button" onClick={() => setShowPassword((v) => !v)}
                   className="absolute right-4 flex items-center justify-center"
-                  aria-label="Toggle password visibility"
-                >
+                  aria-label="Toggle password">
                   {showPassword
                     ? <EyeOff size={16} style={{ color: "rgba(65,67,27,0.40)" }} />
                     : <Eye size={16} style={{ color: "rgba(65,67,27,0.40)" }} />}
@@ -138,14 +138,11 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Submit */}
-            <button
-              type="submit" disabled={loading}
+            <button type="submit" disabled={loading}
               className="w-full py-3 rounded-xl font-semibold text-sm
                          transition-opacity duration-150 disabled:opacity-60"
-              style={{ background: "#41431B", color: "#F8F3E1" }}
-            >
-              {loading ? "Signing in..." : "Login"}
+              style={{ background: "#41431B", color: "#F8F3E1" }}>
+              {loading ? "Signing in..." : "Login →"}
             </button>
           </form>
 
@@ -157,19 +154,22 @@ export default function LoginPage() {
           </div>
 
           {/* Google */}
-          <button
-            type="button" onClick={handleGoogleLogin}
+          <button type="button" onClick={handleGoogle} disabled={googleLoading}
             className="w-full flex items-center justify-center gap-3 py-3 rounded-xl
-                       border text-sm font-medium transition-opacity hover:opacity-75"
-            style={{ borderColor: "#E3DBBB", color: "#41431B" }}
-          >
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
-              <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
-              <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
-              <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
-            </svg>
-            Continue with Google
+                       border text-sm font-medium transition-opacity hover:opacity-75
+                       disabled:opacity-60"
+            style={{ borderColor: "#E3DBBB", color: "#41431B" }}>
+            {googleLoading ? "Redirecting to Google..." : (
+              <>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
+                  <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+                  <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+                  <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+                </svg>
+                Continue with Google
+              </>
+            )}
           </button>
 
           <p className="text-center text-sm mt-6" style={{ color: "rgba(65,67,27,0.55)" }}>

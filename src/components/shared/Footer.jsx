@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, Github, Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import { BookOpen, Globe, Mail, MapPin, Phone } from "lucide-react";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -25,9 +25,9 @@ const legalLinks = [
 ];
 
 const socialLinks = [
-  { icon: Github, label: "GitHub", href: "https://github.com" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: Twitter, label: "Twitter / X", href: "https://x.com" },
+  { icon: Globe, label: "Website", href: "https://skillnest.com" },
+  { icon: Mail, label: "LinkedIn", href: "https://linkedin.com" },
+  { icon: MapPin, label: "Twitter / X", href: "https://x.com" },
 ];
 
 export default function Footer() {

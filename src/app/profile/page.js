@@ -36,22 +36,21 @@ export default function ProfilePage() {
 
   const memberSince = user.createdAt
     ? new Date(user.createdAt).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    : "N/A";
+      year: "numeric", month: "long", day: "numeric",
+    })
+    : "Joined recently";
 
   const handleLogout = () => {
     logout();
     toast.success("Logged out successfully");
     router.push("/");
+    router.refresh();
   };
 
   const stats = [
     { icon: BookOpen, label: "Enrolled Courses", value: "0" },
-    { icon: CheckCircle, label: "Completed",       value: "0" },
-    { icon: Award,      label: "Certificates",     value: "0" },
+    { icon: CheckCircle, label: "Completed", value: "0" },
+    { icon: Award, label: "Certificates", value: "0" },
   ];
 
   return (
@@ -166,8 +165,8 @@ export default function ProfilePage() {
 
           <div className="flex flex-col gap-4">
             {[
-              { icon: User,     label: "Full Name",      value: user.name },
-              { icon: Mail,     label: "Email Address",  value: user.email },
+              { icon: User, label: "Full Name", value: user.name },
+              { icon: Mail, label: "Email Address", value: user.email },
               {
                 icon: Calendar,
                 label: "Auth Provider",

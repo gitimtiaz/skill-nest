@@ -1,4 +1,5 @@
 import { Geist } from "next/font/google";
+import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/shared/Navbar";
@@ -11,23 +12,20 @@ const geist = Geist({
 });
 
 export const metadata = {
-  title: "SkillNest: Master Your Inner Talent.",
+  title: "SkillNest – Master your inner talent.",
   description:
     "A modern online learning platform for Web Development, AI, ML, Python, Android App Development, WebOps, Cyber Security, and more.",
-  keywords: [
-    "online learning",
-    "web development",
-    "AI courses",
-    "python",
-    "cyber security",
-    "SkillNest",
-  ],
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="skillnest" className={geist.variable}>
       <body className="min-h-screen flex flex-col bg-cream-light">
+        {/* Google Identity Services — loaded once for the whole app */}
+        <Script
+          src="https://accounts.google.com/gsi/client"
+          strategy="beforeInteractive"
+        />
         <AuthProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

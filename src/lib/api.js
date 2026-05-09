@@ -77,51 +77,51 @@ export async function searchCourses(query) {
 }
 
 // Register a new user
-export async function registerUser({ name, email, password, photoUrl }) {
-  // Check if email already exists
-  const checkRes = await fetch(
-    `${API_URL}/users?email=${encodeURIComponent(email)}`
-  );
-  const existing = await checkRes.json();
-  if (existing.length > 0) {
-    throw new Error("An account with this email already exists.");
-  }
+// export async function registerUser({ name, email, password, photoUrl }) {
+//   // Check if email already exists
+//   const checkRes = await fetch(
+//     `${API_URL}/users?email=${encodeURIComponent(email)}`
+//   );
+//   const existing = await checkRes.json();
+//   if (existing.length > 0) {
+//     throw new Error("An account with this email already exists.");
+//   }
 
-  const res = await fetch(`${API_URL}/users`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      name,
-      email,
-      password, 
-      photoUrl: photoUrl || "",
-      createdAt: new Date().toISOString(),
-    }),
-  });
+//   const res = await fetch(`${API_URL}/users`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({
+//       name,
+//       email,
+//       password, 
+//       photoUrl: photoUrl || "",
+//       createdAt: new Date().toISOString(),
+//     }),
+//   });
 
-  if (!res.ok) throw new Error("Registration failed. Please try again.");
-  return res.json();
-}
+//   if (!res.ok) throw new Error("Registration failed. Please try again.");
+//   return res.json();
+// }
 
 // Login: match email + password
-export async function loginUser({ email, password }) {
-  const res = await fetch(
-    `${API_URL}/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
-  );
-  const users = await res.json();
-  if (users.length === 0) {
-    throw new Error("Invalid email or password.");
-  }
-  return users[0];
-}
+// export async function loginUser({ email, password }) {
+//   const res = await fetch(
+//     `${API_URL}/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+//   );
+//   const users = await res.json();
+//   if (users.length === 0) {
+//     throw new Error("Invalid email or password.");
+//   }
+//   return users[0];
+// }
 
 // Update user info (name + photoUrl)
-export async function updateUserInDb(id, { name, photoUrl }) {
-  const res = await fetch(`${API_URL}/users/${id}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, photoUrl }),
-  });
-  if (!res.ok) throw new Error("Failed to update profile.");
-  return res.json();
-}
+// export async function updateUserInDb(id, { name, photoUrl }) {
+//   const res = await fetch(`${API_URL}/users/${id}`, {
+//     method: "PATCH",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ name, photoUrl }),
+//   });
+//   if (!res.ok) throw new Error("Failed to update profile.");
+//   return res.json();
+// }
