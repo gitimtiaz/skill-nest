@@ -20,7 +20,7 @@ const slides = [
     label: "Tech Education Reimagined",
     heading: "From Zero to Job Ready",
     subtext:
-      "Master Web Dev, AI, Machine Learning, Cyber Security and more — all in one platform built for serious learners.",
+      "Master Web Dev, AI, Machine Learning, Cyber Security and more. All in one platform built for serious learners.",
     cta: { label: "Browse All Courses", href: "/courses" },
     ctaSecondary: { label: "View Instructors", href: "#instructors" },
     bg: "linear-gradient(135deg, #2a2c10 0%, #41431B 50%, #4a4d1e 100%)",
